@@ -1,0 +1,10 @@
+<?php
+
+require_once __DIR__ . "/vendor/autoload.php";
+
+use Redis\Redis;
+
+
+$redis = new Redis("127.0.0.1", 6379);
+
+$redis->connect();
