@@ -2,10 +2,11 @@
 
 namespace Redis\Actions\Set;
 
+use Redis\ActionInterface;
 use Redis\Storage\Storage;
 
 
-final class Set {
+final class Set implements ActionInterface {
     private string $key;
 
     private string $value;

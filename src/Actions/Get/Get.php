@@ -2,10 +2,11 @@
 
 namespace Redis\Actions\Get;
 
+use Redis\ActionInterface;
 use Redis\Storage\Storage;
 
 
-final class Get {
+final class Get implements ActionInterface {
     private string $key;
 
     public function __construct(array $params) {

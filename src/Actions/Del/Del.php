@@ -2,10 +2,11 @@
 
 namespace Redis\Actions\Del;
 
+use Redis\ActionInterface;
 use Redis\Storage\Storage;
 
 
-final class Del {
+final class Del implements ActionInterface {
     private string $key;
 
     public function __construct(array $params) {

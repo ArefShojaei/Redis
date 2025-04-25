@@ -2,8 +2,10 @@
 
 namespace Redis\Actions\Ping;
 
+use Redis\ActionInterface;
 
-final class Ping {
+
+final class Ping implements ActionInterface {
     public function dispatch(): string {
         return "PONG!";
     }
