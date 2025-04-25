@@ -15,5 +15,13 @@ final class CommandInvoker implements CommandInvokerInterface {
         $this->command = $command;
     }
     
-    public function executeCommand() {}
+    public function executeCommand(): void {
+        $action = ucfirst($this->command->getAction());
+
+        $class = "Redis\\Actions\\{$action}\\{$action}";
+
+        echo !class_exists($class) 
+            ? "The command is not valid!" . PHP_EOL
+            : (new $class($this->command->getParams()))->dispatch();
+    }
 }
