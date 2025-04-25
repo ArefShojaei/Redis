@@ -30,7 +30,7 @@ final class Redis {
         do {
             echo "{$this->host}:{$this->port}> ";
             
-            $input = fgets(STDIN);
+            $input = trim(fgets(STDIN));
 
             $command = new Command($input);
 
