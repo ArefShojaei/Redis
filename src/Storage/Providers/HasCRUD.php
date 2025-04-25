@@ -43,6 +43,14 @@ trait HasCRUD {
         return true;
     }
 
+    public static function has(string $key): bool {
+        $index = self::hash($key);
+        
+        return array_key_exists($index, self::$data) && array_key_exists($key, self::$data[$index])
+            ? true
+            : false;
+    }
+
     private static function isEmpty(): bool {
         return empty(self::$data);
     }

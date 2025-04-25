@@ -9,6 +9,7 @@ interface HasCRUDInterface {
     public static function update(string $key, string $newValue): bool;
     public static function all(): ?array;
     public static function remove(string $key): bool;
+    public static function has(string $key): bool;
 }
 
 interface StorageInterface extends HasCRUDInterface {}
