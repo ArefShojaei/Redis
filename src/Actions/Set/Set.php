@@ -22,6 +22,6 @@ final class Set {
     public function dispatch(): string {
         $isSaved = Storage::save($this->key, $this->value);
         
-        return ($isSaved ? "OK" : "NO") . PHP_EOL;
+        return $isSaved ? "True" : "(nil)";
     }
 }

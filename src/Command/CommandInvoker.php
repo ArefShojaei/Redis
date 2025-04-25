@@ -22,6 +22,6 @@ final class CommandInvoker implements CommandInvokerInterface {
 
         echo !class_exists($class) 
             ? "The command is not valid!" . PHP_EOL
-            : (new $class($this->command->getParams()))->dispatch();
+            : (new $class($this->command->getParams()))->dispatch() . PHP_EOL;
     }
 }

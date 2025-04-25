@@ -13,12 +13,8 @@ final class Get {
     }
 
     public function dispatch(): string {
-        $id = $this->key;
-
-        $value = Storage::get($id);
+        $value = Storage::get($this->key);
         
-        var_dump($value);
-
-        return $this->key;
+        return $value ? $value : "(nil)";
     }
 }
