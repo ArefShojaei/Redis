@@ -51,6 +51,30 @@ trait HasCRUD {
             : false;
     }
 
+    public static function saveWithAlias(string $alias, string $key, string $value): bool {
+        self::$data[$alias][$key] = $value;
+
+        return true;
+    }
+
+    public static function getWithAlias(string $alias): ?array {
+        return self::$data[$alias] ?? null;
+    }
+
+    public static function updateWithAlias(string $alias, string $key, string $value): bool {
+        self::saveWithAlias($alias, $key, $value);
+
+        return true;
+    }
+
+    public static function removeWithAlias(string $alias, string $key, string $value): bool {
+        if (!array_key_exists($alias, self::$data) || !array_key_exists($key, self::$data[$alias])) return false;
+
+        unset(self::$data[$alias][$key]);
+
+        return true;
+    }
+
     private static function isEmpty(): bool {
         return empty(self::$data);
     }
