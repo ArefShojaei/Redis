@@ -61,16 +61,20 @@ trait HasCRUD {
         return self::$data[$alias] ?? null;
     }
 
-    public static function updateWithAlias(string $alias, string $key, string $value): bool {
-        self::saveWithAlias($alias, $key, $value);
+    public static function updateWithAlias(string $alias, string $key, string $newValue): bool {
+        self::saveWithAlias($alias, $key, $newValue);
 
         return true;
     }
 
-    public static function removeWithAlias(string $alias, string $key, string $value): bool {
-        if (!array_key_exists($alias, self::$data) || !array_key_exists($key, self::$data[$alias])) return false;
+    public static function removeWithAlias(string $alias, string $key): bool {
+        $index = self::hash($key);
 
+        if (!array_key_exists($alias, self::$data) || !array_key_exists($key, self::$data[$alias])) return false;
+        
         unset(self::$data[$alias][$key]);
+        
+        unset(self::$data[$index][$key]);
 
         return true;
     }
