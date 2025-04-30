@@ -79,6 +79,12 @@ trait HasCRUD {
         return true;
     }
 
+    public static function destroy(): bool {
+        self::$data = [];
+
+        return true;
+    }
+
     private static function isEmpty(): bool {
         return empty(self::$data);
     }

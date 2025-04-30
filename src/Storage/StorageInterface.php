@@ -14,6 +14,7 @@ interface HasCRUDInterface {
     public static function getWithAlias(string $alias): ?array;
     public static function updateWithAlias(string $alias, string $key, string $newValue): bool;
     public static function removeWithAlias(string $alias, string $key): bool;
+    public static function destroy(): bool;
 }
 
 interface StorageInterface extends HasCRUDInterface {}
