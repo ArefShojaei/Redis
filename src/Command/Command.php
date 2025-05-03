@@ -35,13 +35,9 @@ final class Command implements CommandInterface {
     public function toArray(): ?array {
         if ($this->isEmpty()) return null;
 
-        $extractedCommand = explode(" ", $this->command);
+        preg_match_all("/\w+|[\'\"].+[\'\"]/", $this->command, $matches);
 
-        $action = array_shift($extractedCommand);
-        $key = array_shift($extractedCommand);
-        $value = implode(" ", $extractedCommand);
-
-        return [$action, $key, $value];
+        return current($matches);
     }
     
     public function toString(): ?string {
