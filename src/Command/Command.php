@@ -35,7 +35,13 @@ final class Command implements CommandInterface {
     public function toArray(): ?array {
         if ($this->isEmpty()) return null;
 
-        return explode(" ", $this->command);
+        $extractedCommand = explode(" ", $this->command);
+
+        $action = array_shift($extractedCommand);
+        $key = array_shift($extractedCommand);
+        $value = implode(" ", $extractedCommand);
+
+        return [$action, $key, $value];
     }
     
     public function toString(): ?string {
