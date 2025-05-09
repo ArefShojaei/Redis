@@ -7,7 +7,7 @@ use Redis\Storage\Storage;
 
 
 final class Hset implements ActionInterface {
-    private string $alias;
+    private string $hash;
 
     private string $key;
 
@@ -15,9 +15,9 @@ final class Hset implements ActionInterface {
 
 
     public function __construct(array $params) {
-        [$alias, $key, $value] = $params;
+        [$hash, $key, $value] = $params;
 
-        $this->alias = $alias;
+        $this->hash = $hash;
 
         $this->key = $key;
         
@@ -25,7 +25,7 @@ final class Hset implements ActionInterface {
     }
 
     public function dispatch(): string {
-        $isSaved = Storage::saveWithAlias($this->alias, $this->key, $this->value);
+        $isSaved = Storage::saveHash($this->hash, $this->key, $this->value);
         
         return $isSaved ? "True": "(nil)";
     }
