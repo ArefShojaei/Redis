@@ -21,9 +21,9 @@ final class Append implements ActionInterface {
     }
 
     public function dispatch(): string {
+        if (!Storage::has($this->key)) Storage::save($this->key, $this->value);
+        
         $value = Storage::get($this->key);
-
-        if (empty($value)) Storage::save($this->key, $this->value);
 
         $combinedValues = $value . $this->value;
 

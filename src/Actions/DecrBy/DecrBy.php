@@ -11,6 +11,7 @@ final class DecrBy implements ActionInterface {
 
     private string $value;
 
+    
     public function __construct(array $params) {
         [$key, $value] = $params;
 

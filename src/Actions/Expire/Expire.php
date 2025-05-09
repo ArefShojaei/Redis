@@ -7,17 +7,15 @@ use Redis\Storage\Storage;
 
 
 final class Expire implements ActionInterface {
-    private string $alias;
+    private const HASH = "time";
 
     private string $key;
 
-    private int $value;
+    private string $value;
 
 
     public function __construct(array $params) {
         [$key, $value] = $params;
-
-        $this->alias = "time";
 
         $this->key = $key;
         
@@ -29,7 +27,7 @@ final class Expire implements ActionInterface {
 
         $futureTimestamp = $currentTimestamp + $this->value;
 
-        Storage::saveWithAlias($this->alias, $this->key, $futureTimestamp);
+        Storage::saveHash(self::HASH, $this->key, $futureTimestamp);
 
         return true ? "True": "(nil)";
     }

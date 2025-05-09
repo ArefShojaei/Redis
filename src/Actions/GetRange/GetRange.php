@@ -9,9 +9,9 @@ use Redis\Storage\Storage;
 final class GetRange implements ActionInterface {
     private string $key;
 
-    private int $start;
+    private string $start;
     
-    private int $end;
+    private string $end;
 
     
     public function __construct(array $params) {

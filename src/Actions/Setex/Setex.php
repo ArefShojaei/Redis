@@ -10,7 +10,7 @@ use Redis\Actions\Expire\Expire;
 final class Setex implements ActionInterface {
     private string $key;
 
-    private int $seconds;
+    private string $seconds;
 
     private string $value;
 

@@ -9,6 +9,7 @@ use Redis\Storage\Storage;
 final class Incr implements ActionInterface {
     private string $key;
 
+    
     public function __construct(array $params) {
         $this->key = current($params);
     }
