@@ -22,7 +22,20 @@ interface HasHashInterface {
     public static function hasHashByKey(string $hash, string $key): bool;
 }
 
-interface HasCRUDInterface extends HasStringInterface, HasHashInterface {
+interface HasListInterface {
+    public static function saveList(string $list, string $value): bool;
+    public static function getList(string $list): ?array;
+    public static function getListByValue(string $list, string $value): ?string;
+    public static function updateList(string $list, string $value): bool;
+    public static function removeList(string $list): bool;
+    public static function removeListByValue(string $list, string $value): bool;
+    public static function hasList(string $list): bool;
+    public static function hasListByValue(string $list, string $value): bool;
+}
+
+interface HasCRUDInterface extends 
+    HasStringInterface, HasHashInterface,
+    HasListInterface {
     public static function all(): array;
     public static function destroy(): bool;
 }

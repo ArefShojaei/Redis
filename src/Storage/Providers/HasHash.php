@@ -7,7 +7,7 @@ trait HasHash {
     public static function saveHash(string $hash, string $key, string $value): bool {
         $index = self::hash($hash);
 
-        self::$data[self::HASH_LIST][$index][$hash][$key] = $value;
+        self::$data[self::HASH_ALIAS][$index][$hash][$key] = $value;
 
         return true;
     }
@@ -15,13 +15,13 @@ trait HasHash {
     public static function getHash(string $hash): ?array {
         $index = self::hash($hash);
 
-        return self::$data[self::HASH_LIST][$index][$hash] ?? null;
+        return self::$data[self::HASH_ALIAS][$index][$hash] ?? null;
     }
 
     public static function getHashByKey(string $hash, string $key): ?string {
         $index = self::hash($hash);
 
-        return self::$data[self::HASH_LIST][$index][$hash][$key] ?? null;
+        return self::$data[self::HASH_ALIAS][$index][$hash][$key] ?? null;
     }
 
     public static function updateHash(string $hash, string $key, string $newValue): bool {
@@ -33,9 +33,9 @@ trait HasHash {
     public static function removeHash(string $hash): bool {
         $index = self::hash($hash);
         
-        if (!array_key_exists($hash, self::$data[self::HASH_LIST][$index])) return false;
+        if (!array_key_exists($hash, self::$data[self::HASH_ALIAS][$index])) return false;
         
-        unset(self::$data[self::HASH_LIST][$index][$hash]);
+        unset(self::$data[self::HASH_ALIAS][$index][$hash]);
         
         return true;
     }
@@ -43,9 +43,9 @@ trait HasHash {
     public static function removeHashByKey(string $hash, string $key): bool {
         $index = self::hash($hash);
         
-        if (!array_key_exists($hash, self::$data[self::HASH_LIST][$index]) || !array_key_exists($key, self::$data[self::HASH_LIST][$index][$hash])) return false;
+        if (!array_key_exists($hash, self::$data[self::HASH_ALIAS][$index]) || !array_key_exists($key, self::$data[self::HASH_ALIAS][$index][$hash])) return false;
         
-        unset(self::$data[self::HASH_LIST][$index][$hash][$key]);
+        unset(self::$data[self::HASH_ALIAS][$index][$hash][$key]);
         
         return true;
     }
@@ -53,12 +53,12 @@ trait HasHash {
     public static function hasHash(string $hash): bool {
         $index = self::hash($hash);
         
-        return array_key_exists($hash, self::$data[self::HASH_LIST][$index]) ? true : false;
+        return array_key_exists($hash, self::$data[self::HASH_ALIAS][$index]) ? true : false;
     }
 
     public static function hasHashByKey(string $hash, string $key): bool {
         $index = self::hash($hash);
         
-        return array_key_exists($hash, self::$data[self::HASH_LIST][$index]) || array_key_exists($key, self::$data[self::HASH_LIST][$index][$hash]) ? true : false;
+        return array_key_exists($hash, self::$data[self::HASH_ALIAS][$index]) && array_key_exists($key, self::$data[self::HASH_ALIAS][$index][$hash]) ? true : false;
     }
 }

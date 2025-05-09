@@ -6,19 +6,22 @@ use Redis\Storage\StorageInterface;
 use Redis\Storage\Providers\{
     HasHash,
     HasHashTable,
+    HasList,
     HasString
 };
 
 
 final class Storage implements StorageInterface {
-    use HasHashTable, HasString, HasHash;
+    use HasHashTable, HasString, HasHash, HasList;
 
 
     private static array $data = [];
 
-    private const INDEX_LIST = "indexes";
+    private const INDEX_ALIAS = "indexes";
 
-    private const HASH_LIST = "hashes";
+    private const HASH_ALIAS = "hashes";
+    
+    private const LIST_ALIAS = "list";
 
 
     public static function all(): array {

@@ -21,9 +21,9 @@ final class GetSet implements ActionInterface {
     }
 
     public function dispatch(): string {
-        $isKeyExists = Storage::has($this->key);
+        $isExists = Storage::has($this->key);
 
-        if ($isKeyExists) return Storage::get($this->key);
+        if ($isExists) return Storage::get($this->key);
 
         Storage::save($this->key, $this->value);
 

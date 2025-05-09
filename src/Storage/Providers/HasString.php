@@ -7,7 +7,7 @@ trait HasString {
     public static function save(string $key, string $value): bool {
         $index = self::hash($key);
 
-        self::$data[self::INDEX_LIST][$index][$key] = $value;
+        self::$data[self::INDEX_ALIAS][$index][$key] = $value;
 
         return true;
     }
@@ -15,8 +15,8 @@ trait HasString {
     public static function get(string $key): ?string {
         $index = self::hash($key);
 
-        return array_key_exists($index, self::$data[self::INDEX_LIST]) && array_key_exists($key, self::$data[self::INDEX_LIST][$index])
-            ? self::$data[$index][$key]
+        return array_key_exists($index, self::$data[self::INDEX_ALIAS]) && array_key_exists($key, self::$data[self::INDEX_ALIAS][$index])
+            ? self::$data[self::INDEX_ALIAS][$index][$key]
             : null;
     }
 
@@ -27,17 +27,17 @@ trait HasString {
     public static function remove(string $key): bool {
         $index = self::hash($key);
 
-        if (!array_key_exists($index, self::$data[self::INDEX_LIST]) || !array_key_exists($key, self::$data[self::INDEX_LIST][$index])) return false;
+        if (!array_key_exists($index, self::$data[self::INDEX_ALIAS]) || !array_key_exists($key, self::$data[self::INDEX_ALIAS][$index])) return false;
 
-        unset(self::$data[self::INDEX_LIST][$index][$key]);
+        unset(self::$data[self::INDEX_ALIAS][$index][$key]);
 
         return true;
     }
 
     public static function has(string $key): bool {
         $index = self::hash($key);
-        
-        return array_key_exists($index, self::$data[self::INDEX_LIST]) && array_key_exists($key, self::$data[self::INDEX_LIST][$index])
+
+        return array_key_exists(self::INDEX_ALIAS, self::$data) && array_key_exists($index, self::$data[self::INDEX_ALIAS]) && array_key_exists($key, self::$data[self::INDEX_ALIAS][$index])
             ? true
             : false;
     }
