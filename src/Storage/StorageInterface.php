@@ -12,30 +12,26 @@ interface HasStringInterface {
 }
 
 interface HasHashInterface {
-    public static function saveHash(string $hash, string $key, string $value): bool;
-    public static function getHash(string $hash): ?array;
-    public static function getHashByKey(string $hash, string $key): ?string;
-    public static function updateHash(string $hash, string $key, string $newValue): bool;
-    public static function removeHash(string $hash): bool;
-    public static function removeHashByKey(string $hash, string $key): bool;
-    public static function hasHash(string $hash): bool;
-    public static function hasHashByKey(string $hash, string $key): bool;
+    public static function saveHash(string $name, string $key, string $value): bool;
+    public static function getHash(string $name): ?array;
+    public static function getHashByKey(string $name, string $key): ?string;
+    public static function updateHash(string $name, string $key, string $newValue): bool;
+    public static function removeHash(string $name): bool;
+    public static function removeHashByKey(string $name, string $key): bool;
+    public static function hasHash(string $name): bool;
+    public static function hasHashByKey(string $name, string $key): bool;
 }
 
 interface HasListInterface {
-    public static function saveList(string $list, string $value): bool;
-    public static function getList(string $list): ?array;
-    public static function getListByValue(string $list, string $value): ?string;
-    public static function updateList(string $list, string $value): bool;
-    public static function removeList(string $list): bool;
-    public static function removeListByValue(string $list, string $value): bool;
-    public static function hasList(string $list): bool;
-    public static function hasListByValue(string $list, string $value): bool;
+    public static function saveList(string $name, string $value, bool $leftPush = false): bool;
+    public static function getList(string $name): ?array;
+    public static function updateList(string $name, string $value, bool $leftPush = false): bool;
+    public static function removeList(string $name): bool;
+    public static function removeListByIndex(string $name, int $index, int $selfIndex): bool;
 }
 
 interface HasCRUDInterface extends 
-    HasStringInterface, HasHashInterface,
-    HasListInterface {
+    HasStringInterface, HasHashInterface {
     public static function all(): array;
     public static function destroy(): bool;
 }
