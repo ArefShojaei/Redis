@@ -8,25 +8,37 @@ use Redis\Command\{
 };
 
 
-final class Redis {
+class Redis implements RedisInterface {
     private string $host;
 
     private int $port;
 
 
-    public function __construct(string $host, int $port) {
-        $this->host = $host;
-        
-        $this->port = $port;
+    public function __construct(array $params) {
+        $this->host = $params["host"];
+
+        $this->port = $params["port"];
     }
 
-    public function connect(): void {
+    public function __call($action, $params) {
+        $action = ucfirst($action);
+
+        $class = "Redis\\Actions\\{$action}\\{$action}";
+
+        echo !class_exists($class) 
+            ? "The class is not exists!" . PHP_EOL
+            : (new $class($params))->dispatch() . PHP_EOL;
+    }
+
+    public function connect(): self {
         echo "Server is running on [http://{$this->host}:{$this->port}]" . PHP_EOL;
     
-        $this->listen();
+        shell_exec("php -S {$this->host}:{$this->port} " . __FILE__);
+
+        return $this;
     }
 
-    private function listen(): void {
+    final public function launch(): void {
         do {
             echo "{$this->host}:{$this->port}> ";
             
