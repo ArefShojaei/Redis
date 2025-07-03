@@ -2,11 +2,11 @@
 
 namespace Redis\Actions;
 
-use Redis\ActionInterface;
+use Redis\Contracts\Interfaces\Action as IAction;
 use Redis\Storage\Storage;
 
 
-final class GetRange implements ActionInterface {
+final class GetRange implements IAction {
     private string $key;
 
     private string $start;

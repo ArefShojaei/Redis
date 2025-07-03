@@ -2,12 +2,12 @@
 
 namespace Redis\Actions;
 
-use Redis\ActionInterface;
+use Redis\Contracts\Interfaces\Action as IAction;
 use Redis\Storage\Storage;
 use Redis\Actions\Expire;
 
 
-final class Setex implements ActionInterface {
+final class Setex implements IAction {
     private string $key;
 
     private string $seconds;

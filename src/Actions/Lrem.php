@@ -2,11 +2,11 @@
 
 namespace Redis\Actions;
 
-use Redis\ActionInterface;
+use Redis\Contracts\Interfaces\Action as IAction;
 use Redis\Storage\Storage;
 
 
-final class Lrem implements ActionInterface {
+final class Lrem implements IAction {
     private const SELF_INDEX = 1;
 
     private string $list;

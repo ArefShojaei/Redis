@@ -2,11 +2,11 @@
 
 namespace Redis\Actions;
 
-use Redis\ActionInterface;
+use Redis\Contracts\Interfaces\Action as IAction;
 use Redis\Storage\Storage;
 
 
-final class Hkeys implements ActionInterface {
+final class Hkeys implements IAction {
     private string $hash;
 
 

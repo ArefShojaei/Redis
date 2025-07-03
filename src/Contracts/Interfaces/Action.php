@@ -1,8 +1,8 @@
 <?php
 
-namespace Redis;
+namespace Redis\Contracts\Interfaces;
 
 
-interface ActionInterface {
+interface Action {
     public function dispatch(): string;
 }

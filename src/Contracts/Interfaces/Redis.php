@@ -1,9 +1,9 @@
 <?php
 
-namespace Redis;
+namespace Redis\Contracts\Interfaces;
 
 
-interface RedisInterface {
+interface Redis {
     public function connect(): self;
     public function launch(): void;
 }

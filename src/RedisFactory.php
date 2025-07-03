@@ -2,10 +2,10 @@
 
 namespace Redis;
 
-use Redis\RedisFactoryInterface;
+use Redis\Contracts\Interfaces\RedisFactory as IRedisFactory;
 
 
-final class RedisFactory implements RedisFactoryInterface {
+final class RedisFactory implements IRedisFactory {
     private static function createInstance(array $params): Redis {
         return new Redis([
             "host" => $params["host"],

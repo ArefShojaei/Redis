@@ -2,11 +2,11 @@
 
 namespace Redis\Actions;
 
-use Redis\ActionInterface;
+use Redis\Contracts\Interfaces\Action as IAction;
 use Redis\Storage\Storage;
 
 
-final class Expire implements ActionInterface {
+final class Expire implements IAction {
     private const HASH = "time";
 
     private string $key;

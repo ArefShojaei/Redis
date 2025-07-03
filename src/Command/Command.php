@@ -2,10 +2,10 @@
 
 namespace Redis\Command;
 
-use Redis\Command\CommandInterface;
+use Redis\Contracts\Interfaces\Command as ICommand;
 
 
-final class Command implements CommandInterface {
+final class Command implements ICommand {
     private ?string $command;
 
     public function __construct(string $command) {

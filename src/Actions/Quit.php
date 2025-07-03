@@ -2,10 +2,10 @@
 
 namespace Redis\Actions;
 
-use Redis\ActionInterface;
+use Redis\Contracts\Interfaces\Action as IAction;
 
 
-final class Quit implements ActionInterface {
+final class Quit implements IAction {
     public function dispatch(): string {
        exit;
     }

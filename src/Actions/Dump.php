@@ -2,11 +2,11 @@
 
 namespace Redis\Actions;
 
-use Redis\ActionInterface;
+use Redis\Contracts\Interfaces\Action as IAction;
 use Redis\Storage\Storage;
 
 
-final class Dump implements ActionInterface {
+final class Dump implements IAction {
     public function dispatch(): string {
         $storage = Storage::all();
         

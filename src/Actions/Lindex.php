@@ -2,11 +2,11 @@
 
 namespace Redis\Actions;
 
-use Redis\ActionInterface;
+use Redis\Contracts\Interfaces\Action as IAction;
 use Redis\Storage\Storage;
 
 
-final class Lindex implements ActionInterface {
+final class Lindex implements IAction {
     private string $list;
 
     private string $index;

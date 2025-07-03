@@ -1,11 +1,11 @@
 <?php
 
-namespace Redis\Command;
+namespace Redis\Contracts\Interfaces;
 
 use Redis\Command\Command;
 
 
-interface CommandInvokerInterface {
+interface CommandInvoker {
     public function setCommand(Command $command): void;
     public function executeCommand(): void;
 }

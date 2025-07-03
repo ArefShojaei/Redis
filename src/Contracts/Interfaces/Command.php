@@ -1,9 +1,9 @@
 <?php
 
-namespace Redis\Command;
+namespace Redis\Contracts\Interfaces;
 
 
-interface CommandInterface {
+interface Command {
     public function isEmpty(): bool;
     public function toArray(): ?array;
     public function toString(): ?string;

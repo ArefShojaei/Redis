@@ -2,11 +2,11 @@
 
 namespace Redis\Actions;
 
-use Redis\ActionInterface;
+use Redis\Contracts\Interfaces\Action as IAction;
 use Redis\Storage\Storage;
 
 
-final class Hmget implements ActionInterface {
+final class Hmget implements IAction {
     private string $hash;
 
     private array $keys;

@@ -3,11 +3,11 @@
 namespace Redis\Actions;
 
 use InvalidArgumentException;
-use Redis\ActionInterface;
+use Redis\Contracts\Interfaces\Action as IAction;
 use Redis\Storage\Storage;
 
 
-final class Keys implements ActionInterface {
+final class Keys implements IAction {
     private const SYMBOL = "*";
 
     private string $key;

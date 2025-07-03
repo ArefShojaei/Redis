@@ -2,7 +2,7 @@
 
 namespace Redis\Storage;
 
-use Redis\Storage\StorageInterface;
+use Redis\Contracts\Interfaces\Storage as IStorage;
 use Redis\Storage\Providers\{
     HasHash,
     HasHashTable,
@@ -11,7 +11,7 @@ use Redis\Storage\Providers\{
 };
 
 
-final class Storage implements StorageInterface {
+final class Storage implements IStorage {
     use HasHashTable, HasString, HasHash, HasList;
 
 

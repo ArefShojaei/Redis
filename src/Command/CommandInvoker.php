@@ -2,13 +2,11 @@
 
 namespace Redis\Command;
 
-use Redis\Command\{
-    Command,
-    CommandInvokerInterface
-};
+use Redis\Command\Command;
+use Redis\Contracts\Interfaces\CommandInvoker as ICommandInvoker;
 
 
-final class CommandInvoker implements CommandInvokerInterface {
+final class CommandInvoker implements ICommandInvoker {
     private ?Command $command;
 
     public function setCommand(Command $command): void {

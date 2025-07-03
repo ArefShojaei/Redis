@@ -1,9 +1,9 @@
 <?php
 
-namespace Redis\Storage;
+namespace Redis\Contracts\Interfaces;
 
 
-interface HasStringInterface {
+interface HasString {
     public static function save(string $key, string $value): bool;
     public static function get(string $key): ?string;
     public static function update(string $key, string $newValue): bool;
@@ -11,7 +11,7 @@ interface HasStringInterface {
     public static function has(string $key): bool;
 }
 
-interface HasHashInterface {
+interface HasHash {
     public static function saveHash(string $name, string $key, string $value): bool;
     public static function getHash(string $name): ?array;
     public static function getHashByKey(string $name, string $key): ?string;
@@ -22,7 +22,7 @@ interface HasHashInterface {
     public static function hasHashByKey(string $name, string $key): bool;
 }
 
-interface HasListInterface {
+interface HasList {
     public static function saveList(string $name, string $value, bool $leftPush = false): bool;
     public static function getList(string $name): ?array;
     public static function updateList(string $name, string $value, bool $leftPush = false): bool;
@@ -30,11 +30,11 @@ interface HasListInterface {
     public static function removeListByIndex(string $name, int $index, int $selfIndex): bool;
 }
 
-interface HasCRUDInterface extends 
-    HasStringInterface, HasHashInterface {
+interface HasCRUD extends 
+    HasString, HasHash {
     public static function all(): array;
     public static function destroy(): bool;
 }
 
 
-interface StorageInterface extends HasCRUDInterface {}
+interface Storage extends HasCRUD {}

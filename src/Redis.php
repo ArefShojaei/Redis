@@ -6,9 +6,10 @@ use Redis\Command\{
     Command,
     CommandInvoker
 };
+use Redis\Contracts\Interfaces\Redis as IRedis;
 
 
-class Redis implements RedisInterface {
+class Redis implements IRedis {
     private string $host;
 
     private int $port;

@@ -2,11 +2,11 @@
 
 namespace Redis\Actions;
 
-use Redis\ActionInterface;
+use Redis\Contracts\Interfaces\Action as IAction;
 use Redis\Storage\Storage;
 
 
-final class GetSet implements ActionInterface {
+final class GetSet implements IAction {
     private string $key;
 
     private string $value;

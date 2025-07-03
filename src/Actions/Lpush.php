@@ -2,11 +2,11 @@
 
 namespace Redis\Actions;
 
-use Redis\ActionInterface;
+use Redis\Contracts\Interfaces\Action as IAction;
 use Redis\Storage\Storage;
 
 
-final class Lpush implements ActionInterface {
+final class Lpush implements IAction {
     private string $list;
 
     private string $value;

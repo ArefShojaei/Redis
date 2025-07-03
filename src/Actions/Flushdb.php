@@ -2,11 +2,11 @@
 
 namespace Redis\Actions;
 
-use Redis\ActionInterface;
+use Redis\Contracts\Interfaces\Action as IAction;
 use Redis\Storage\Storage;
 
 
-final class Flushdb implements ActionInterface {
+final class Flushdb implements IAction {
     public function dispatch(): string {
         $isDestoryed = Storage::destroy();
         
