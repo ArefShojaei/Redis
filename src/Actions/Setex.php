@@ -1,10 +1,10 @@
 <?php
 
-namespace Redis\Actions\Setex;
+namespace Redis\Actions;
 
 use Redis\ActionInterface;
 use Redis\Storage\Storage;
-use Redis\Actions\Expire\Expire;
+use Redis\Actions\Expire;
 
 
 final class Setex implements ActionInterface {

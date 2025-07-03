@@ -1,6 +1,6 @@
 <?php
 
-namespace Redis\Actions\Get;
+namespace Redis\Actions;
 
 use Redis\ActionInterface;
 use Redis\Storage\Storage;

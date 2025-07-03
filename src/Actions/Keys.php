@@ -1,6 +1,6 @@
 <?php
 
-namespace Redis\Actions\Keys;
+namespace Redis\Actions;
 
 use InvalidArgumentException;
 use Redis\ActionInterface;

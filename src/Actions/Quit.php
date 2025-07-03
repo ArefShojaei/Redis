@@ -1,6 +1,6 @@
 <?php
 
-namespace Redis\Actions\Quit;
+namespace Redis\Actions;
 
 use Redis\ActionInterface;
 

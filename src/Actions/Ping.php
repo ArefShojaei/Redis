@@ -1,6 +1,6 @@
 <?php
 
-namespace Redis\Actions\Ping;
+namespace Redis\Actions;
 
 use Redis\ActionInterface;
 
