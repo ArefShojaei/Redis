@@ -1,13 +1,10 @@
 <?php
 
-require_once __DIR__ . "/vendor/autoload.php";
+require_once dirname(__DIR__) . "/vendor/autoload.php";
 
 use Redis\RedisFactory;
 
 
-$redis = RedisFactory::createClient([
-    "host" => "127.0.0.1",
-    "port" => 6379 
-]);
+$redis = RedisFactory::createServer();
 
 $redis->connect();
