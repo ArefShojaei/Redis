@@ -4,6 +4,7 @@ namespace Redis\Command;
 
 use Redis\Command\Command;
 use Redis\Contracts\Interfaces\CommandInvoker as ICommandInvoker;
+use Redis\Exceptions\InvalidCommand;
 
 
 final class CommandInvoker implements ICommandInvoker {
@@ -19,7 +20,7 @@ final class CommandInvoker implements ICommandInvoker {
         $class = "Redis\\Actions\\{$action}";
 
         echo !class_exists($class) 
-            ? "The command is not valid!" . PHP_EOL
+            ? throw new InvalidCommand()
             : (new $class($this->command->getParams()))->dispatch() . PHP_EOL;
     }
 }

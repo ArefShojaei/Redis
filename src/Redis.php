@@ -7,9 +7,10 @@ use Redis\Command\{
     CommandInvoker
 };
 use Redis\Contracts\Interfaces\Redis as IRedis;
+use Redis\Exceptions\InvalidAction;
 
 
-class Redis implements IRedis {
+final class Redis implements IRedis {
     private string $host;
 
     private int $port;
@@ -27,7 +28,7 @@ class Redis implements IRedis {
         $class = "Redis\\Actions\\{$action}";
 
         echo !class_exists($class) 
-            ? "The class is not exists!" . PHP_EOL
+            ? throw new InvalidAction("The \"{$action}\" action doen't exist!")
             : (new $class($params))->dispatch() . PHP_EOL;
     }
 
