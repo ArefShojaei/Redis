@@ -24,7 +24,7 @@ class Redis implements IRedis {
     public function __call($action, $params) {
         $action = ucfirst($action);
 
-        $class = "Redis\\Actions\\{$action}\\{$action}";
+        $class = "Redis\\Actions\\{$action}";
 
         echo !class_exists($class) 
             ? "The class is not exists!" . PHP_EOL
