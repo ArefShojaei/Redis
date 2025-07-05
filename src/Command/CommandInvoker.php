@@ -16,7 +16,7 @@ final class CommandInvoker implements ICommandInvoker {
     public function executeCommand(): void {
         $action = ucfirst($this->command->getAction());
 
-        $class = "Redis\\Actions\\{$action}\\{$action}";
+        $class = "Redis\\Actions\\{$action}";
 
         echo !class_exists($class) 
             ? "The command is not valid!" . PHP_EOL
