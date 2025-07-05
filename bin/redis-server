@@ -7,4 +7,4 @@ use Redis\RedisFactory;
 
 $redis = RedisFactory::createServer();
 
-$redis->connect();
+$redis->listen();

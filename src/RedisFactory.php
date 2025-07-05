@@ -8,7 +8,7 @@ use Redis\Contracts\Interfaces\RedisFactory as IRedisFactory;
 final class RedisFactory implements IRedisFactory {
     private const SERVER_HOST = "127.0.0.1";
 
-    private const SERVER_PORT = 6379;
+    private const SERVER_PORT = 5500;
 
 
     private static function createInstance(array $params): Redis {

@@ -32,15 +32,19 @@ final class Redis implements IRedis {
             : (new $class($params))->dispatch() . PHP_EOL;
     }
 
-    public function connect(): self {
+    /**
+     * HTTP requests listener from the client
+     */
+    public function listen(): void {
         echo "Server is running on [http://{$this->host}:{$this->port}]" . PHP_EOL;
     
-        shell_exec("php -S {$this->host}:{$this->port} " . __FILE__);
-
-        return $this;
+        shell_exec("php -S {$this->host}:{$this->port} "  . __DIR__ . "\\request.php");
     }
 
-    final public function launch(): void {
+    /**
+     * Launch at the Terminal
+     */
+    public function launch(): void {
         do {
             echo "{$this->host}:{$this->port}> ";
             

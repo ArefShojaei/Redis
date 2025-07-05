@@ -4,6 +4,6 @@ namespace Redis\Contracts\Interfaces;
 
 
 interface Redis {
-    public function connect(): self;
+    public function listen(): void;
     public function launch(): void;
 }
