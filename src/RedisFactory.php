@@ -18,10 +18,6 @@ final class RedisFactory implements IRedisFactory {
         ]);
     }
 
-    public static function createServer(array $params = []): Redis {
-        return self::createInstance($params);
-    }
-
     public static function createCli(array $params = []): Redis {
         return self::createInstance($params);
     }
