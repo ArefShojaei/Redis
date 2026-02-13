@@ -28,17 +28,17 @@ final class Redis implements IRedis {
         $class = "Redis\\Actions\\{$action}";
 
         echo !class_exists($class) 
-            ? throw new InvalidAction("The \"{$action}\" action doen't exist!")
+            ? (throw new InvalidAction("The \"{$action}\" action doen't exist!"))
             : (new $class($params))->dispatch() . PHP_EOL;
     }
 
     /**
-     * HTTP requests listener from the client
+     * Create HTTP server for listening requests from client
      */
     public function listen(): void {
         echo "Server is running on [http://{$this->host}:{$this->port}]" . PHP_EOL;
     
-        shell_exec("php -S {$this->host}:{$this->port} "  . __DIR__ . "\\request.php");
+        shell_exec("php -S {$this->host}:{$this->port} -t "  . dirname(__DIR__) . "/public");
     }
 
     /**
