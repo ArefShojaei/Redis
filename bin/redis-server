@@ -1,0 +1,10 @@
+<?php
+
+require_once dirname(__DIR__) . "/vendor/autoload.php";
+
+use Redis\RedisFactory;
+
+
+$server = RedisFactory::createServer();
+
+$server->listen();
