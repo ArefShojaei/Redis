@@ -38,5 +38,5 @@ interface HasCRUD extends
 
 
 interface Storage extends HasCRUD {
-    public static function saveTo(string $path = "/public/storage", string $filename = "store"): void;
+    public static function saveFile(string $path = "/public/storage", string $filename = "store"): void;
 }

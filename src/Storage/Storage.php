@@ -24,7 +24,7 @@ final class Storage implements IStorage {
     private const LIST_ALIAS = "list";
 
 
-    public static function saveTo(string $path = "/public/storage", string $filename = "store"): void {
+    public static function saveFile(string $path = "/public/storage", string $filename = "store"): void {
         file_put_contents(dirname(__DIR__, 2) . "{$path}/{$filename}.json", json_encode(Storage::all(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 
