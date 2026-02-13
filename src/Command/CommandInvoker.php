@@ -5,6 +5,8 @@ namespace Redis\Command;
 use Redis\Command\Command;
 use Redis\Contracts\Interfaces\CommandInvoker as ICommandInvoker;
 use Redis\Exceptions\InvalidCommand;
+use Redis\Logging\Logger;
+use Redis\Storage\Storage;
 
 
 final class CommandInvoker implements ICommandInvoker {
@@ -20,7 +22,15 @@ final class CommandInvoker implements ICommandInvoker {
         $class = "Redis\\Actions\\{$action}";
 
         echo !class_exists($class) 
-            ? throw new InvalidCommand()
+            ? (throw new InvalidCommand())
             : (new $class($this->command->getParams()))->dispatch() . PHP_EOL;
+
+        /**
+         * Saving data
+         */
+        Storage::saveFile();
+            
+        $command = $this->command->getAction() . " " . implode(" ", $this->command->getParams());
+        Logger::log($command);    
     }
 }
