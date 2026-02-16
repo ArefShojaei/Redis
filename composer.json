@@ -1,6 +1,6 @@
 {
     "name": "arefshojaei/redis",
-    "description": "Redis database",
+    "description": "Memory database with key & value",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -11,7 +11,7 @@
     "authors": [
         {
             "name": "ArefShojaei",
-            "email": "arefshojaei82dev@gmail.com"
+            "email": "arefshojaei82@gmail.com"
         }
     ],
     "require": {
