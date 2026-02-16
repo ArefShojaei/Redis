@@ -20,13 +20,19 @@ function getCommands(): array {
 }
 
 function getLastCommand(): string {
-    return end(getCommands());
+    $commands = getCommands();
+    
+    return end($commands);
 }
 
 function _getStoreKeysCount(string $key): int {
-    $indexes = getStore()[$key];
-
+    $store = getStore();
+    
     $count = 0;
+
+    if (!array_key_exists($key, $store)) return $count;
+    
+    $indexes = $store[$key];
 
     foreach ($indexes as $key => $data) {
         foreach ($data as $prop => $value) {
