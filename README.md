@@ -1,3 +1,34 @@
+<img src="./docs/thumbnail.png">
+
+<h1 align="center">Redis library</h1>
+<p align="center">Memory database with key & value</p>
+
+<img src="./docs/cover.png">
+
+
+## Installation
+> Using Composer
+```bash
+composer require arefshojaei/redis
+```
+
+> Using Github
+```bash
+git clone https://github.com/ArefShojaei/Redis.git
+```
+
+## How to use that?
+> 1- Run in Terminal (CLI)
+```bash
+php bin/redis-cli
+```
+
+> 2- Run as Live-server to explore data in page
+```bash
+php bin/redis-server
+```
+
+## Commands:
 ### String
 > Set value by key
 ```bash
