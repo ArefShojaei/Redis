@@ -2,38 +2,29 @@
 
 namespace Redis\Actions;
 
-use InvalidArgumentException;
 use Redis\Contracts\Interfaces\Action as IAction;
 use Redis\Storage\Storage;
 
 
 final class Keys implements IAction {
-    private const SYMBOL = "*";
-
-    private string $key;
-
-    
-    public function __construct(array $params) {
-        $this->key = current($params);
-
-        if ($this->key !== self::SYMBOL) throw new InvalidArgumentException("Should use the \"*\" in the command argument!");
-    }
-
     public function dispatch(): string {
         $values = Storage::all();
-
-        if (is_null($values)) return "(empty list or set)";
 
         $result = "";
 
         $count = 1;
 
-        foreach ($values as $index => $data) {
-            foreach ($data as $key => $value) {
+        foreach ($values as $name => $data) {
+            $result .= "{$name}:\n";
+            foreach ($data as $key => $_) {
                 $result .= "{$count}) \"{$key}\"" . PHP_EOL;
                 
                 $count++;
             }
+
+            $count = 1;
+
+            $result .= "\n";
         }
 
         return $result;

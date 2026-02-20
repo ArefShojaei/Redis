@@ -21,7 +21,9 @@ final class DecrBy implements IAction {
     }
 
     public function dispatch(): string {
-        $newValue = $this->value;
+        $currentValue = Storage::get($this->key);
+
+        $newValue = $currentValue - $this->value;
 
         $isUpdated = Storage::update($this->key, $newValue);
         

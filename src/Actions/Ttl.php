@@ -27,6 +27,7 @@ final class Ttl implements IAction {
 
         if ($currentTimestamp > $timestamp) {
             $isRemoved = Storage::removeHashByKey(self::HASH, $this->key);
+            Storage::remove($this->key);
 
             return $isRemoved ? "True" : "nil";
         }
