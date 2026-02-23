@@ -3,6 +3,7 @@
 namespace Redis\Storage;
 
 use Redis\Contracts\Interfaces\Storage as IStorage;
+use Redis\Enums\Path;
 use Redis\Storage\Providers\{
     HasHash,
     HasHashTable,
@@ -24,7 +25,7 @@ final class Storage implements IStorage {
     private const LIST_ALIAS = "list";
 
 
-    public static function saveFile(string $path = "/public/storage", string $filename = "store"): void {
+    public static function saveFile(string $path = Path::STORAGE->value, string $filename = "store"): void {
         file_put_contents(dirname(__DIR__, 2) . "{$path}/{$filename}.json", json_encode(Storage::all(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 

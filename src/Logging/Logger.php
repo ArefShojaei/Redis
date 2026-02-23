@@ -3,7 +3,7 @@
 namespace Redis\Logging;
 
 use Redis\Contracts\Interfaces\Logger as ILogger;
-
+use Redis\Enums\Path;
 
 final class Logger implements ILogger {
     public static function log(string $command): void {
@@ -15,6 +15,6 @@ final class Logger implements ILogger {
     }
 
     private static function save(string $log): void {
-        file_put_contents(dirname(__DIR__, 2) . "/public/storage/command.log", $log . PHP_EOL, FILE_APPEND);
+        file_put_contents(dirname(__DIR__, 2) . Path::STORAGE->value . "/command.log", $log . PHP_EOL, FILE_APPEND);
     }
 }
