@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -21,7 +22,7 @@ final class Ttl implements IAction {
 
         $timestamps = Storage::getHash(self::HASH);
 
-        if (empty($timestamps)) return "nil";
+        if (empty($timestamps)) return ActionMessage::BAD->value;
 
         $timestamp = $timestamps[$this->key];
 
@@ -29,7 +30,7 @@ final class Ttl implements IAction {
             $isRemoved = Storage::removeHashByKey(self::HASH, $this->key);
             Storage::remove($this->key);
 
-            return $isRemoved ? "True" : "nil";
+            return $isRemoved ? ActionMessage::GOOD->value : ActionMessage::BAD->value;
         }
 
         return abs(($currentTimestamp - $timestamp)) . " seconds";

@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -27,6 +28,6 @@ final class Hset implements IAction {
     public function dispatch(): string {
         $isSaved = Storage::saveHash($this->hash, $this->key, $this->value);
         
-        return $isSaved ? "True": "(nil)";
+        return $isSaved ? ActionMessage::GOOD->value : ActionMessage::BAD->value;
     }
 }

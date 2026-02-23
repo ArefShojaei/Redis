@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -17,6 +18,6 @@ final class Strlen implements IAction {
     public function dispatch(): string {
         $value = Storage::get($this->key);
         
-        return $value ? (string) strlen($value) : "(nil)";
+        return $value ? (string) strlen($value) : ActionMessage::BAD->value;
     }
 }

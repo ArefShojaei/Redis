@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -27,6 +28,6 @@ final class Hvals implements IAction {
             $result .= "{$index}) {$value}" . PHP_EOL;
         }
 
-        return $result ? $result : "(nil)";
+        return $result ? $result : ActionMessage::BAD->value;
     }
 }

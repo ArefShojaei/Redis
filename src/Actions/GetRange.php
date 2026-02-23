@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -27,6 +28,6 @@ final class GetRange implements IAction {
     public function dispatch(): string {
         $value = Storage::get($this->key);
 
-        return $value ? substr($value, $this->start, $this->end + 1) : "(nil)";
+        return $value ? substr($value, $this->start, $this->end + 1) : ActionMessage::BAD->value;
     }
 }

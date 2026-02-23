@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -23,6 +24,6 @@ final class Hdel implements IAction {
     public function dispatch(): string {
         $isRemoved = Storage::removeHashByKey($this->hash, $this->key);
         
-        return $isRemoved ? "True" : "(nil)";
+        return $isRemoved ? ActionMessage::GOOD->value : ActionMessage::BAD->value;
     }
 }

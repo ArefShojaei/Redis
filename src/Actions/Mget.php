@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -25,6 +26,6 @@ final class Mget implements IAction {
             if ($value) $content .= "{$index}) " . Storage::get($key) . PHP_EOL;
         }
 
-        return $content ? $content : "(nil)";
+        return $content ? $content : ActionMessage::BAD->value;
     }
 }

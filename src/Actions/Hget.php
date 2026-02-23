@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -23,6 +24,6 @@ final class Hget implements IAction {
     public function dispatch(): string {
         $value = Storage::getHashByKey($this->hash, $this->key);
 
-        return $value ? $value : "(nil)";
+        return $value ? $value : ActionMessage::BAD->value;
     }
 }

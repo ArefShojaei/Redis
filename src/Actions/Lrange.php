@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -27,6 +28,6 @@ final class Lrange implements IAction {
     public function dispatch(): string {
         $list = Storage::getList($this->list);
     
-        return $list ? print_r(array_slice($list, $this->start, $this->end + 1), true) : "(nil)";
+        return $list ? print_r(array_slice($list, $this->start, $this->end + 1), true) : ActionMessage::BAD->value;
     }
 }

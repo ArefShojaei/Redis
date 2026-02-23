@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -31,6 +32,6 @@ final class Hmget implements IAction {
             if ($value) $content .= "{$index}) " . $value . PHP_EOL;
         }
 
-        return $content ? $content : "(nil)";
+        return $content ? $content : ActionMessage::BAD->value;
     }
 }

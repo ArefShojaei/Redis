@@ -5,7 +5,7 @@ namespace Redis\Actions;
 use Redis\Contracts\Interfaces\Action as IAction;
 use Redis\Storage\Storage;
 use Redis\Actions\Expire;
-
+use Redis\Enums\ActionMessage;
 
 final class Setex implements IAction {
     private string $key;
@@ -30,6 +30,6 @@ final class Setex implements IAction {
 
         (new Expire([$this->key, $this->seconds]))->dispatch();
         
-        return $isSaved ? "True" : "(nil)";
+        return $isSaved ? ActionMessage::GOOD->value : ActionMessage::BAD->value;
     }
 }

@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -23,6 +24,6 @@ final class Hexists implements IAction {
     public function dispatch(): string {
         $isHashExists = Storage::hasHashByKey($this->hash, $this->key);
         
-        return $isHashExists ? "True" : "(nil)";
+        return $isHashExists ? ActionMessage::GOOD->value : ActionMessage::BAD->value;
     }
 }

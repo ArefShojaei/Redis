@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -17,6 +18,6 @@ final class Hlen implements IAction {
     public function dispatch(): string {
         $data = Storage::getHash($this->hash);
         
-        return $data ? count($data) : "(nil)";
+        return $data ? count($data) : ActionMessage::BAD->value;
     }
 }

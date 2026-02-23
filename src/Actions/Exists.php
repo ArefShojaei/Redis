@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -17,6 +18,6 @@ final class Exists implements IAction {
     public function dispatch(): string {
         $isExists = Storage::has($this->key);
         
-        return $isExists ? "True" : "(nil)";
+        return $isExists ? ActionMessage::GOOD->value : ActionMessage::BAD->value;
     }
 }

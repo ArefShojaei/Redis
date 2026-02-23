@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -21,6 +22,6 @@ final class Mset implements IAction {
             Storage::save($key, $value);
         }
 
-        return true ? "True" : "(nil)";
+        return true ? ActionMessage::GOOD->value : ActionMessage::BAD->value;
     }
 }

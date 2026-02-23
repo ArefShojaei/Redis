@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -29,6 +30,6 @@ final class Append implements IAction {
 
         $isSaved = Storage::save($this->key, $combinedValues);
 
-        return $isSaved ? "True": "(nil)";
+        return $isSaved ? ActionMessage::GOOD->value : ActionMessage::BAD->value;
     }
 }

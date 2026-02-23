@@ -3,6 +3,7 @@
 namespace Redis\Actions;
 
 use Redis\Contracts\Interfaces\Action as IAction;
+use Redis\Enums\ActionMessage;
 use Redis\Storage\Storage;
 
 
@@ -17,6 +18,6 @@ final class Rpop implements IAction {
     public function dispatch(): string {
         $isRemoved = Storage::removeList($this->list);
     
-        return $isRemoved ? "True" : "(nil)";
+        return $isRemoved ? ActionMessage::GOOD->value : ActionMessage::BAD->value;
     }
 }
