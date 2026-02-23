@@ -45,7 +45,7 @@ final class Redis implements IRedis {
      * Launch at the Terminal
      */
     public function launch(): void {
-        do {
+        while (true) {
             echo "{$this->host}:{$this->port}> ";
             
             $input = trim(fgets(STDIN));
@@ -57,6 +57,6 @@ final class Redis implements IRedis {
             $invoker->setCommand($command);
 
             $invoker->executeCommand();
-        } while (true);
+        }
     }
 }
