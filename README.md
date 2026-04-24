@@ -1,7 +1,7 @@
 <img src="./docs/thumbnail.png">
 
 <h1 align="center">Redis library</h1>
-<p align="center">Memory database with key & value</p>
+<p align="center">A memory database with key & value</p>
 
 <img src="./docs/cover.png">
 
@@ -20,12 +20,22 @@ git clone https://github.com/ArefShojaei/Redis.git
 ## How to use that?
 > 1- Run in Terminal (CLI)
 ```bash
+# First method:
 php bin/redis-cli
+
+# Second method:
+chmod +x ./bin/redis-cli
+./bin/redis-cli
 ```
 
 > 2- Run as Live-server to explore data in page
 ```bash
+# First method:
 php bin/redis-server
+
+# Second method:
+chmod +x ./bin/redis-server
+./bin/redis-server
 ```
 
 ## Commands:
