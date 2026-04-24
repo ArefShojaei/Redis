@@ -1,7 +1,6 @@
 <img src="./docs/thumbnail.png">
 
-<h1 align="center">Redis library</h1>
-<p align="center">A memory database with key & value</p>
+<h1 align="center">A memory database with key & value</h1>
 
 <img src="./docs/cover.png">
 
