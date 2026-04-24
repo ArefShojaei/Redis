@@ -1,6 +1,6 @@
 {
     "name": "arefshojaei/redis",
-    "description": "Memory database with key & value",
+    "description": "A memory database with key & value",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -15,9 +15,6 @@
         }
     ],
     "require": {
-        "php" : "^8.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^10"
+        "php" : "^8.1"
     }
 }
