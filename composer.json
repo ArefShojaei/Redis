@@ -3,6 +3,17 @@
     "description": "A memory database with key & value",
     "type": "library",
     "license": "MIT",
+    "keywords": [
+        "redis",
+        "nosql",
+        "database",
+        "cli",
+        "command",
+        "memory",
+        "dashboard"
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Redis\\": "src/"
