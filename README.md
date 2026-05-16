@@ -1,8 +1,7 @@
-<img src="./docs/thumbnail.png">
+<img width="1200" height="900" alt="Redis" src="https://github.com/user-attachments/assets/b20fbb5e-fc16-482a-934a-82e41e9cd98b" />
+
 
 <h1 align="center">A memory database with key & value</h1>
-
-<img src="./docs/cover.png">
 
 
 ## Installation
