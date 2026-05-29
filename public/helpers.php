@@ -6,6 +6,8 @@
 function getStore(): array {
     $store = file_get_contents(__DIR__ . "/storage/store.json");
 
+    if (!$store) return [];
+
     return json_decode($store, true);
 }
 
