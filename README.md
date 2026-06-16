@@ -1,266 +1,343 @@
+<h1 align="center">
+    🚀 Redis - PHP In-Memory Key-Value Database
+</h1>
+
+<p align="center">
+    A lightweight Redis-inspired in-memory database built with PHP.
+    Store, manage, and explore your data using a powerful CLI interface
+    or a live web dashboard.
+</p>
+
 <img width="1200" height="900" alt="Redis" src="https://github.com/user-attachments/assets/b20fbb5e-fc16-482a-934a-82e41e9cd98b" />
 
+---
 
-<h1 align="center">A memory database with key & value</h1>
+## ✨ Features
 
+* 🔑 **Key-Value Storage** - Fast in-memory data management
+* 💻 **Interactive CLI** - Manage your database through terminal commands
+* 🌐 **Live Web Server** - Explore your data from a browser interface
+* 📝 **String Operations** - Set, get, append, and manipulate text data
+* 🔢 **Number Operations** - Increment and decrement numeric values
+* 🗂️ **Hash Support** - Store structured objects using key-value pairs
+* 📚 **List Support** - Manage ordered collections of values
+* ⏱️ **Expiration System** - Set TTL for temporary data
+* ⚡ **Fast & Lightweight** - Built entirely with pure PHP
 
-## Installation
-> Using Composer
+---
+
+# 📥 Installation
+
+## Requirements
+
+* PHP 8.0 or higher
+* Composer
+
+---
+
+## Install with Composer
+
 ```bash
 composer require arefshojaei/redis
 ```
 
-> Using Github
+---
+
+## Clone from GitHub
+
 ```bash
 git clone https://github.com/ArefShojaei/Redis.git
+cd Redis
 ```
 
-## How to use that?
-> 1- Run in Terminal (CLI)
-```bash
-# First method:
-php bin/redis-cli
+---
 
-# Second method:
+# 🚀 Getting Started
+
+Redis can be used in two different modes.
+
+## 1. Interactive CLI Mode
+
+Run the database shell:
+
+```bash
+php bin/redis-cli
+```
+
+Or make it executable:
+
+```bash
 chmod +x ./bin/redis-cli
 ./bin/redis-cli
 ```
 
-> 2- Run as Live-server to explore data in page
-```bash
-# First method:
-php bin/redis-server
+---
 
-# Second method:
+## 2. Web Dashboard Mode
+
+Start the live server:
+
+```bash
+php bin/redis-server
+```
+
+Or:
+
+```bash
 chmod +x ./bin/redis-server
 ./bin/redis-server
 ```
 
-## Commands:
-### String
-> Set value by key
-```bash
-set [key] [value]
+Then open your browser:
+
+```txt
+http://localhost:8000
 ```
 
-> Get value by key
+---
+
+# 📚 Data Types & Commands
+
+## 🔤 String Commands
+
+Set and get values:
+
 ```bash
-get [key]
+set username Robert
+
+get username
 ```
 
-> Set & Get value by key
+Set and return old value:
+
 ```bash
-getSet [key] [value]
+getSet username Kevin
 ```
 
-> Get string length
+Multiple values:
+
 ```bash
-strlen [key]
+mset name=John age=25 country=USA
 ```
 
-> Set multiple values
+Append text:
+
 ```bash
-mset [key=value] [key=value] [key=value] [...]
+append message World
 ```
 
-> Get multiple values
+Expiration:
+
 ```bash
-mset [key-1] [key-2] [key-3] [key-n]
+setex token 3600 secret-key
+
+ttl token
 ```
 
-> Append value to string
-```bash
-set message Hello
+Delete:
 
-append message World # HelloWorld
+```bash
+del username
+unlink user1 user2 user3
 ```
 
-> Get range of string from start to end by index
-```bash
-set message Hello
+---
 
-getRange message 0 1 # He
+## 🔢 Number Commands
+
+Increase and decrease numbers:
+
+```bash
+set counter 10
+
+incr counter
+decr counter
 ```
 
-> Delete value by key
+Custom increment:
+
 ```bash
-del [key]
+incrBy counter 5
+
+decrBy counter 2
 ```
 
-> Delete multiple values by keys
+---
+
+## 🗂 Hash Commands
+
+Create object-like data:
+
 ```bash
-unlink [key-1] [key-2] [key-3] [key-n]
+hset user name Robert
+
+hset user age 25
 ```
 
-> Set expire-time for string
+Multiple fields:
+
 ```bash
-setex [key] [seconds] [value]
+hmset user name:Robert age:25 role:admin
 ```
 
-> Get current expire-time seconds to delete the value
+Get data:
+
 ```bash
-setex [key]
+hget user name
+
+hgetall user
 ```
 
-> Check to exist value by key
+Other operations:
+
 ```bash
-exists [key]
+hkeys user
+hvals user
+hlen user
+hexists user age
 ```
 
+---
 
-### Number
-> Increment number by key
+## 📋 List Commands
+
+Push values:
+
 ```bash
-set counter 5 # Init state
+lpush tasks "Build Redis"
 
-incr counter # Update the state => 5+1 = 6
+rpush tasks "Write Documentation"
 ```
 
-> Decrement number by key
-```bash
-set counter 5 # Init state
+Read data:
 
-decr counter # Update the state => 5-1 = 4
+```bash
+lrange tasks 0 10
+
+llen tasks
 ```
 
-> Increment number with value
-```bash
-set counter 5 # Init state
+Remove items:
 
-incrBy counter 10 # Update the state => 5+10 = 15
+```bash
+lpop tasks
+
+rpop tasks
 ```
 
-> Decrement number with value
-```bash
-set counter 5 # Init state
+---
 
-decrBy counter 5 # Update the state => 5-5 = 0
-```
+## 🗄 Database Commands
 
-### Hash
-> Set new hash
-```bash
-hset [name] [key] [value]
-```
-> Set multiple hash data by key & value
-```bash
-hmset [name] [key:value] [key:value] [...]
-```
+Show all stored data:
 
-> Get hash value by key
-```bash
-hget [name] [key]
-```
-
-> Get all hash data
-```bash
-hgetall [name]
-```
-
-> Get hash length
-```bash
-hlen [name]
-```
-
-> Get all hash keys
-```bash
-hkeys [name]
-```
-
-> Get all hash values
-```bash
-hvals [name]
-```
-
-> Get multiple hash values by keys
-```bash
-hvals [name] [key-1] [key-2] [key-3] [key-n]
-```
-
-> Delete hash value by key
-```bash
-hdel [name] [key]
-```
-
-> Check to exist hash value by key
-```bash
-hexists [name] [key]
-```
-
-
-### List
-> Push values to list
-```bash
-lpush [name] [value]
-```
-
-> Pop value from the list by name
-```bash
-lpop [name]
-```
-
-> Get length of list by name
-```bash
-llen [name]
-```
-
-> Get value of list by index
-```bash
-llen [name] [index]
-```
-
-> Get range of list from start to end by name
-```bash
-llen [name] [start] [end]
-```
-
-> Remove value of list by index
-```bash
-lrem [name] [index]
-```
-
-> Set key & value to list by name
-```bash
-lset [name] [key] [value]
-```
-
-> Remove value of list at end of list
-```bash
-Rpop [name]
-```
-
-> Add new value of list at end of list
-```bash
-Rpush [name] [value]
-```
-
-
-### Store
-> Get store
 ```bash
 dump
 ```
 
-> Get all store keys
+List all keys:
+
 ```bash
 keys
 ```
 
-> Destroy the store
+Remove all data:
+
 ```bash
 flushdb
 ```
 
+---
 
-### Session
-> Terminate current session
+## 🔚 Session Commands
+
+Exit the CLI:
+
 ```bash
 quit
 ```
 
+Check connection:
 
-### General
-> FUN!
 ```bash
 ping
 ```
+
+---
+
+# 💡 Example Workflow
+
+Create a simple user record:
+
+```bash
+hset user:1 name Robert
+
+hset user:1 email robert@example.com
+
+hset user:1 role admin
+```
+
+Retrieve the data:
+
+```bash
+hgetall user:1
+```
+
+---
+
+# 🔥 Why This Project?
+
+This project is useful for learning:
+
+* Database engine concepts
+* Key-value storage design
+* Command parsing
+* CLI application development
+* Memory management
+* Data structures implementation in PHP
+
+It is a great educational project for understanding how systems like Redis work internally.
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
+
+1. Fork the repository
+2. Create a feature branch
+
+```bash
+git checkout -b feature/amazing-feature
+```
+
+3. Commit your changes:
+
+```bash
+git commit -m "Add amazing feature"
+```
+
+4. Push your branch:
+
+```bash
+git push origin feature/amazing-feature
+```
+
+5. Open a Pull Request
+
+---
+
+# 👨‍💻 Author
+
+**Aref Shojaei**
+- 📧 Email: [arefshojaei82@gmail.com](mailto:arefshojaei82@gmail.com)
+- 🐙 GitHub: [@ArefShojaei](https://github.com/ArefShojaei)
+- 📦 Packagist: [arefshojaei/kitdash](https://packagist.org/packages/arefshojaei/redis)
+
+---
+
+# ⭐ Show Your Support
+
+If this project helps you learn database internals or PHP system development, consider giving it a Star ⭐ on GitHub.
+
+Your support motivates future improvements.
