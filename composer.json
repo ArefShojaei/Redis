@@ -3,6 +3,7 @@
     "description": "A memory database with key & value",
     "type": "library",
     "license": "MIT",
+    "version": "1.0.0",
     "keywords": [
         "redis",
         "nosql",
