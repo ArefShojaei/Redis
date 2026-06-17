@@ -332,7 +332,7 @@ git push origin feature/amazing-feature
 **Aref Shojaei**
 - 📧 Email: [arefshojaei82@gmail.com](mailto:arefshojaei82@gmail.com)
 - 🐙 GitHub: [@ArefShojaei](https://github.com/ArefShojaei)
-- 📦 Packagist: [arefshojaei/kitdash](https://packagist.org/packages/arefshojaei/redis)
+- 📦 Packagist: [arefshojaei/redis](https://packagist.org/packages/arefshojaei/redis)
 
 ---
 
